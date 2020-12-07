@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container">
+        <div class="border-top pt-3">
+            <h2>Anda berhasil Log out</h2>
+            <small class="text-muted">
+                <a href="{% url 'login' %}">Log In kembali</a>
+            </small>
+        </div>
+    </div>
+{% endblock %}

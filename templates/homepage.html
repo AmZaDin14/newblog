@@ -1,0 +1,183 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+{% load humanize %}
+<header>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+		<div class="container">
+			<a class="navbar-brand" href="#">
+				<img src="{% static 'img/logo.webp' %}" width="30" height="30" class="d-inline-block align-top" alt="">
+				StarLigHTs
+			</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<i class="fas fa-bars"></i>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav ml-lg-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="#home">Home <span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#blog">Blog Post</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#developer">Developer</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#about">Tentang Kami</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+</header>
+<div class="jumbotron jumbotron-fluid height100p banner" id="home">
+	<div class="container h100">
+		<div class="contentBox h100">
+			<div>
+				<h1 data-aos="fade-up" ata-aos-duration="1000" data-aos-delay="0">Enhance Yourself</h1>
+				<p data-aos="fade-up" ata-aos-duration="1000" data-aos-delay="500">Jaringan, Pemrograman, Mikrotik,
+					Linux, dan Ubuntu</p>
+			</div>
+		</div>
+	</div>
+</div>
+<section class="blog" id="blog">
+	<div class="container">
+		<div class="row">
+			<div class="offset-sm-2 col-sm-8">
+				<div class="headerText text-center">
+					<h2 data-aos="fade-up" ata-aos-duration="1000" data-aos-delay="0">Our Latest Post</h2>
+				</div>
+			</div>
+		</div>
+		<div class="row main-row p-2" data-aos="fade-up" ata-aos-duration="1000" data-aos-delay="0">
+			<div class="col-lg-4 col-md-12 col-sm-12" data-aos="fade-up" ata-aos-duration="1000" data-aos-delay="100">
+				<div class="blog-img">
+					<img src="{{ post.thumbnail.url }}" alt="Post" class="img-fluid">
+				</div>
+				<div class="row">
+					<div class="col-sm-12 mb-2">
+						<ul class="list-group list-group-horizontal">
+							<li class="list-group-item">
+								<i class="fas fa-tags" aria-hidden="true"></i><a href="#" class="ml-1">{{ post.category }}</a></i>
+							</li>
+							<div class="post-infoku ml-3">
+								<p class="admin"><i class="fas fa-user"></i><a href="#" class="ml-1">{{ post.author.get_full_name }}</a></p>
+							</div>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-8 col-md-12 col-sm-12" data-aos="fade-up" ata-aos-duration="1000" data-aos-delay="200">
+				<div class="blog-title mb-2">
+					<h3>{{ post.title}}</h3>
+				</div>
+				<div class="blog-date mb-2 text-muted">
+					<span>{{ post.date_created | naturaltime }}</span>
+				</div>
+				<div class="blog-desc">
+					<p>{{ post.excerpt }}</p>
+				</div>
+				<div class="blog-read-more mb-2">
+                    <a href="{% url 'post-detail' post.slug %}">
+					<button class="btn btn-outline-dark">Read More</button>
+                    </a>
+				</div>
+			</div>
+		</div>
+		<div class="button-blogpost">
+			<a href="{% url  'blog-home' %}" class="btn btnD1" data-aos="fade-up" ata-aos-duration="1000" data-aos-delay="0">View
+				More</a>
+		</div>
+	</div>
+</section>
+<section class="developer" id="developer">
+	<div class="container">
+		<div class="row">
+			<div class="offset-sm-2 col-sm-8">
+				<div class="headerText text-center">
+					<h2 data-aos="fade-up" ata-aos-duration="1000" data-aos-delay="0">Developer</h2>
+					<p data-aos="fade-up" ata-aos-duration="1000" data-aos-delay="100">Website ini dibuat pada 1
+						Desember 2020 sebagai hasil mengimplementasikan dari sebuah contoh video tutorial</p>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-6">
+				<div class="placeBox" data-aos="fade-up" ata-aos-duration="1000" data-aos-delay="500">
+					<div class="imgBx">
+						<img src="{% static 'img/amri.webp' %}" class="img-fluid image-resize max-height">
+					</div>
+					<div class="content">
+						<h3>Amri Reza Wahyudin<br><span>Back-End Programmer</span></h3>
+					</div>
+				</div>
+			</div>
+			<div class="col-6" data-aos="fade-up" ata-aos-duration="1000" data-aos-delay="1000">
+				<div class="placeBox">
+					<div class="imgBx">
+						<img src="{% static 'img/maul.webp' %}" class="img-fluid image-resize">
+					</div>
+					<div class="content">
+						<h3>Maulana Firmansyah<br><span>Front-End Programmer</span></h3>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="about" id="about">
+	<div class="container h100">
+		<div class="contentBox h100">
+			<div>
+				<h1 data-aos="fade-up" ata-aos-duration="1000" data-aos-delay="0">About Us</h1>
+				<p data-aos="fade-up" ata-aos-duration="1000" data-aos-delay="500">Lorem ipsum dolor sit amet,
+					consectetur adipisicing elit. Inventore a ullam quia numquam deserunt aut eligendi accusantium,
+					necessitatibus in, odio tenetur vitae nostrum dolore qui aperiam iure doloremque possimus.
+					Accusamus!</p>
+				<a href="#" class="btn btnD1" data-aos="fade-up" ata-aos-duration="1000" data-aos-delay="1000">Read
+					More</a>
+			</div>
+		</div>
+	</div>
+</section>
+<footer>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12">
+				<ul class="sci">
+					<li><a href="https://web.facebook.com/maulana.firmansyah.1485/"><i class="fab fa-facebook-f"></i></a></li>
+					<!--use font awesome icon-->
+					<li><a href="https://twitter.com/maulanazxz"><i class="fab fa-twitter"></i></a></li>
+					<!--use font awesome icon-->
+					<li><a href="https://github.com/iMazXZ"><i class="fab fa-github"></i></a></li>
+					<!--use font awesome icon-->
+					<li><a href="https://www.instagram.com/maulanazxz/"><i class="fab fa-instagram"></i></a></li>
+					<!--use font awesome icon-->
+				</ul>
+				<p class="cpryt">© Copyright 2020 | <a href="#">StarLigHT Team</a></p>
+			</div>
+		</div>
+	</div>
+</footer>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+	integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+	integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"
+	integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+<script type="text/javascript">
+	$(document).scroll(function () {
+		$('.navbar').toggleClass('scrolled', $(this).scrollTop() > $('.navbar').height());
+	});
+</script>
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+	AOS.init();
+</script>
+{% endblock %}

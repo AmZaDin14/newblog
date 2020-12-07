@@ -1,0 +1,196 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
+.warna-bg {
+    background: linear-gradient(to right, rgba(91, 134, 229, .92), rgba(54, 209, 220, .92));
+}
+
+.custom-toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(54, 209, 220, .92)' stroke-width='4' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+.navbar-toggler {
+    border: none;
+}
+
+.jumbotron-bg {
+    background-size: cover;
+    background: url(../img/bg.webp);
+    background-size: 300px;
+}
+
+.svcimg .img-fluid {
+    max-width: 100%;
+    max-height: 300px;
+}
+
+.jumbotron-bg h1 {
+    font-family: 'Poppins', sans-serif;
+}
+
+
+/* Equal-height card images, cf. https://stackoverflow.com/a/47698201/1375163*/
+
+.card-img-top {
+    /*height: 11vw;*/
+    object-fit: cover;
+}
+
+
+/* Small devices (landscape phones, 576px and up) */
+
+@media (min-width: 576px) {
+    .card-img-top {
+        height: 19vw;
+    }
+}
+
+
+/* Medium devices (tablets, 768px and up) */
+
+@media (min-width: 768px) {
+    .card-img-top {
+        height: 16vw;
+    }
+}
+
+
+/* Large devices (desktops, 992px and up) */
+
+@media (min-width: 992px) {
+    .card-img-top {
+        height: 11vw;
+    }
+}
+
+
+/* Extra large devices (large desktops, 1200px and up) */
+
+@media (min-width: 992px) {
+    .card-img-top {
+        height: 11vw;
+    }
+}
+
+.list-group {
+    padding-bottom: 20px;
+}
+
+.text-primary {
+    color: #007bff !important;
+}
+
+.jumbotron h2 {
+    color: #fff;
+}
+
+.comment-wrapper .panel-body {
+    max-height: 650px;
+    overflow: auto;
+}
+
+.comment-wrapper .media-list .media img {
+    width: 64px;
+    height: 64px;
+    border: 2px solid #e5e7e8;
+}
+
+.comment-wrapper .media-list .media {
+    border-bottom: 1px dashed #efefef;
+    margin-bottom: 25px;
+}
+
+
+/*---DARK MODE TOGGLE---*/
+
+[data-theme="dark"] {
+    background-color: #222 !important;
+    color: #fff;
+}
+
+[data-theme="dark"] .navbar {
+    background-color: #222 !important;
+    color: #eee;
+}
+
+[data-theme="dark"] .navbar a {
+    color: #fff !important
+}
+
+[data-theme="dark"] .navbar-nav a {
+    color: #fff !important;
+}
+
+[data-theme="dark"] .jumbotron-bg {
+    background-size: cover;
+    background: url(../img/bg.webp);
+    background-size: 300px;
+}
+
+[data-theme="dark"] .custom-toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(225, 48, 108, 1)' stroke-width='4' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+[data-theme="dark"] .breadcrumb {
+    background-color: #303030 !important;
+}
+
+[data-theme="dark"] .breadcrumb h6 {
+    color: #eee !important;
+}
+
+[data-theme="dark"] .card {
+    background-color: #303030 !important;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+[data-theme="dark"] .post-outer {
+    background-color: #303030 !important;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+[data-theme="dark"] .warna-bg {
+    background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+}
+
+[data-theme="dark"] .jumbotron h2 {
+    color: #ffffff !important;
+}
+
+[data-theme="dark"] .text-primary {
+    color: #fff !important;
+}
+
+[data-theme="dark"] .card-body h6 {
+    color: #c061ff !important;
+}
+
+[data-theme="dark"] .navbar-toggler {
+    background-color: none !important;
+    border: none;
+}
+
+[data-theme="dark"] .card-body {
+    background-color: #303030 !important;
+}
+
+[data-theme="dark"] .card {
+    border: 0px solid rgba(206, 193, 193, 0.125);
+}
+
+[data-theme="dark"] .form-control {
+    background-color: #222;
+    border: 1px solid #e1306c;
+}
+
+[data-theme="dark"] .btn-outline-primary {
+    color: #fff;
+    border-color: #e1306c;
+}
+
+[data-theme="dark"] .table .thead-light th {
+    color: #fff;
+    background-color: #212529;
+}
+
+[data-theme="dark"] .table {
+    color: #fff;
+}
