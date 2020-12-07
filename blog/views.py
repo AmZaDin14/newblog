@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404
+from django.contrib.auth.models import User
 from .models import Post
 from .forms import CommentForm
 
@@ -45,3 +46,15 @@ def post_detail(request, slug):
         'comment_form': comment_form
     }
     return render(request, 'blog/postdetail.html', context)
+
+
+def author_profile(request, username):
+    user = get_object_or_404(User, username=username)
+
+    context = {
+        'id': 'Author Profile',
+        'title': user.username,
+        'user': user
+    }
+
+    return render(request, 'blog/authorprofile.html', context)

@@ -61,12 +61,12 @@ class Post(models.Model):
 
         super(Post, self).save(*args, **kwargs)
 
-        img = Image.open(self.image.path)
+        img = Image.open(self.thumbnail.path)
         img = img.convert('RGB')
-        img_path = splitext(self.image.path)[0]
-        img_base = basename(self.image.path)
+        img_path = splitext(self.thumbnail.path)[0]
+        img_base = basename(self.thumbnail.path)
         img.save(img_path + '.webp', 'webp')
-        self.image = UPLOAD_TO + '/' + splitext(img_base)[0] + '.webp'
+        self.thumbnail = UPLOAD_TO + '/' + splitext(img_base)[0] + '.webp'
 
     def __str__(self):
         return self.title

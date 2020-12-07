@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load crispy_forms_filters %}
 {% block content %}
     {% load crispy_forms_tags %}
     <div class="container">
@@ -6,7 +7,24 @@
             {% csrf_token %}
             <fieldset class="form-group">
                 <legend class="border-bottom mb-4">Join Today</legend>
-                {{ form | crispy }}
+                {{ form.username | as_crispy_field }}
+                <div class="row">
+                    <div class="col-6">
+                        {{ form.first_name | as_crispy_field }}
+                    </div>
+                    <div class="col-6">
+                        {{ form.last_name | as_crispy_field }}
+                    </div>
+                </div>
+                {{ form.email | as_crispy_field }}
+                <div class="row">
+                    <div class="col-6">
+                        {{ form.password1 | as_crispy_field }}
+                    </div>
+                    <div class="col-6">
+                        {{ form.password2 | as_crispy_field }}
+                    </div>
+                </div>
             </fieldset>
             <div class="form-group">
                 <button class="btn btn-outline-info" type="submit">Sign Up</button>
