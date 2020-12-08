@@ -1,115 +1,145 @@
-{% extends 'blog/../base.html' %}
+{% extends 'blog/base.html' %}
+{% load crispy_forms_filters %}
 {% block content %}
 {% load static %}
 {% load crispy_forms_tags %}
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container">
-                <a class="navbar-brand" href="{% url 'home-page' %}">
-                    <img src="{% static 'img/logo.webp' %}" width="30" height="30" class="d-inline-block align-top" alt=""> StarLigHTs
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'home-page' %}">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'blog-home' %}">Blog Post</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Tentang Kami</a>
-                        </li>
-                    </ul>
-                    <form class="form-inline my-2 my-lg-0">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
-                    </form>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <section class="jumbotron-bg">
-        <div class="jumbotron warna-bg text-white">
-            <div class="container">
-                <h1 class="display-4">StarLigHTs</h1>
-                <div class="custom-control custom-switch">
-                    <input type="checkbox" class="custom-control-input" id="darkSwitch" />
-                    <label class="custom-control-label" for="darkSwitch">Dark Mode</label>
-                </div>
+    {% include 'blog/navbar.html' %}
+    <div id="hero-section">
+        <div class="container">
+            <div id="head-line">
+                <h1>StarLigHTs</h1>
             </div>
         </div>
-    </section>
-    <div class="container">
-        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-            <strong>Selamat Datang!</strong> Web ini sedang dalam proses pengembangan
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
+        <ul class="bg-bubbles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
     </div>
     <div class="container">
-        <nav class="breadcrumb ">
-            <h6 class="breadcrumb-item"><a href="{% url 'home-page' %}">Home</a></h6>
-            <h6 class="breadcrumb-item"><a href="{% url 'blog-home' %}">Blog Post</a></h6>
-            <h6 class="breadcrumb-item active">{{ post.title }}</h6>
-        </nav>
+        <div class="row">
+            <div class="col-lg-10 col-md-8">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mt-3">
+                        <li class="breadcrumb-item"><a href="{% url 'home-page' %}">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{% url 'blog-home' %}">Blog Post</a></li>
+                        <li class="breadcrumb-item active">{{ post.title }}</li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="col-lg-2 col-md-4">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mt-3">
+                        <div class="card-dm">
+                            <div class="custom-control custom-switch">
+                                <input type="checkbox" class="custom-control-input" id="darkSwitch" />
+                                <label class="custom-control-label" for="darkSwitch">Dark</label>
+                            </div>
+                        </div>
+                    </ol>
+                </nav>
+            </div>
+        </div>
         <div class="row">
             <div class="col-md-12 mb-6">
-                <div class="card border-0">
+                <div class="card border-0 mb-4">
                     <div class="card-body">
                         <h2>{{ post.title }}</h2>
                         <a href="#0" class="badge badge-primary"><i class="fas fa-tags" aria-hidden="true"></i>
                             {{ post.category }}</a>
-                        <div><a href="#0">{{ post.author.get_full_name }}</a></div>
-                        <div>Posted on: {{ post.date_created | date:'l, d F Y | G.i' }}</div>
-                        <figure class="service text-center">
+                        <div><a href="#0">{{ post.author }}</a></div>
+                        <div>Posted on: {{ post.date_created }}</div>
+                        <figure class="service text-center mt-3">
                             <div class="svcimg">
                                 <img src="{{ post.thumbnail.url }}" class="figure-img img-fluid rounded" alt="Gambar Postingan">
                                 <div class="overlay"></div>
                             </div>
-                            <figcaption class="figure-caption text-center">Keterangan Gambar</figcaption>
                         </figure>
                         {{ post.content | safe }}
                     </div>
-                    <div class="container">
-                        <div class="col-md-12 card mb-4 mt-3">
-                            <div class="card-body shadow p-3">
-                                <h2>{{ comments.count }} comments</h2>
-                                {% for comment in comments %}
-                                <div class="comments" style="padding: 10px;">
-                                    <p class="font-weight-bold">
-                                        {{ comment.name }}
-                                        <span class=" text-muted font-weight-normal">
-                                            {{ comment.date_created }}
-                                        </span>
-                                    </p>
-                                    {{ comment.body | linebreaks }}
-                                </div>
-                                {% endfor %}
-                            </div>
-                        </div>
-                        <div class="col-md-12 card mb-4  mt-3 ">
-                            <div class="card-body shadow p-3">
-                                {% if new_comment %}
-                                    <div class="alert alert-success" role="alert">
-                                        Your comment is awaiting moderation
-                                    </div>
-                                {% else %}
-                                <h3>Leave a comment</h3>
-                                <form method="post" style="margin-top: 1.3em;">
-                                    {{ comment_form | crispy }}
-                                    {% csrf_token %}
-                                    <button type="submit" class="btn btn-primary  btn-lg">Submit</button>
-                                </form>
-                                {% endif %}
-                            </div>
-                        </div>
-                    </div>
+                    <!--comment-->
+                    <div class="col-md-8 card mb-4  mt-3 ">
+      <div class="card-body">
+        <!-- comments -->
+        <h2>{{ comments.count }} comments</h2>
+
+        {% for comment in comments %}
+        <div class="comments" style="padding: 10px;">
+          <p class="font-weight-bold">
+            {{ comment.name }}
+            <span class=" text-muted font-weight-normal">
+              {{ comment.created_on }}
+            </span>
+          </p>
+          {{ comment.body | linebreaks }}
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="col-md-8 card mb-4  mt-3 ">
+      <div class="card-body">
+        {% if new_comment %}
+        <div class="alert alert-success" role="alert">
+          Your comment is awaiting moderation
+        </div>
+        {% else %}
+        <h3>Leave a comment</h3>
+        <form method="post" style="margin-top: 1.3em;">
+          {{ comment_form | crispy }}
+          {% csrf_token %}
+          <button type="submit" class="btn btn-primary  btn-lg">Submit</button>
+        </form>
+        {% endif %}
+      </div>
+    </div>
                 </div>
+            </div>
+        </div>
+    </div>
+    <div id="hero-section2">
+        <ul class="bg-bubbles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <div class="hero-content container">
+            <h2 class="hero-title">
+                <span>GET IN TOUCH</span>
+            </h2>
+            <p class="hero-description">Follow Social Media Kami di</p>
+            <div id="social-headers">
+                <ul>
+                    <li class="fb-item">
+                        <a href="#"><i class="fab fa-facebook-square"></i>
+                        </a>
+                    </li>
+                    <li class="twitter-item">
+                        <a href="#"><i class="fab fa-twitter-square"></i>
+                        </a>
+                    </li>
+                    <li class="github-item">
+                        <a href="#"><i class="fab fa-github-square"></i>
+                        </a>
+                    </li>
+                    <li class="instagram-item">
+                        <a href="#"><i class="fab fa-instagram-square"></i>
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>

@@ -1,7 +1,8 @@
 from django.db import models
 from datetime import datetime
-from django.template.defaultfilters import slugify
 from django.contrib.auth.models import User
+from django.template.defaultfilters import slugify
+from django.urls import reverse
 from PIL import Image
 from os.path import basename, splitext
 
@@ -15,8 +16,9 @@ STATUS = {
 
 
 class Categories(models.TextChoices):
-    PEMROGRAMAN = 'Pemrograman'
+    DESAIN_GRAFIS = 'Desain Grafis'
     MIKROTIK = 'Mikrotik'
+    PEMROGRAMAN = 'Pemrograman'
     SISTEM_OPERASI = 'Sistem Operasi'
     LAINNYA = 'Lainnya'
 
@@ -70,6 +72,9 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('post-detail', kwargs={'slug': self.slug})
 
 
 class Comment(models.Model):

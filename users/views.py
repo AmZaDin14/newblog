@@ -14,7 +14,12 @@ def register(request):
             return redirect('login')
     else:
         form = UserRegisterForm()
-    return render(request, 'users/register.html', {'form': form})
+
+    context = {
+        'form': form,
+        'id': 'Register'
+    }
+    return render(request, 'users/register.html', context)
 
 
 @login_required()

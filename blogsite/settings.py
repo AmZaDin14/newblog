@@ -147,3 +147,9 @@ AUTH_PASSWORD_VALIDATORS = []
 
 LOGIN_REDIRECT_URL = 'blog-home'
 LOGIN_URL = 'login'
+
+SUMMERNOTE_CONFIG = {
+    'summernote': {
+        'disableResizeEditor': False
+    }
+}

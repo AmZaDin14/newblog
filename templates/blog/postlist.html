@@ -1,37 +1,16 @@
-{% extends 'base.html' %}
+{% extends 'blog/base.html' %}
+{% load crispy_forms_filters %}
 {% block content %}
 {% load static %}
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container">
-                <a class="navbar-brand" href="{% url 'home-page' %}">
-                    <img src="{% static 'img/logo.webp' %}" width="30" height="30" class="d-inline-block align-top" alt=""> StarLigHTs
-                </a>
-                <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+    {% load crispy_forms_tags %}
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'home-page' %}">Home</a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{% url 'blog-home'%}">Blog Post <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Tentang Kami</a>
-                        </li>
-                    </ul>
-                    <form class="form-inline my-2 my-lg-0">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
-                    </form>
-                </div>
-            </div>
-        </nav>
-    </header>
 
+
+    {% include 'blog/navbar.html' %}
+
+    {% include 'blog/login_form.html' %}
+
+    <!-- Awal Jumbotron -->
     <div id="hero-section">
         <div class="container">
             <div id="head-line">
@@ -51,48 +30,76 @@
             <li></li>
         </ul>
     </div>
+    <!-- Akhir Jumbotron -->
 
+    <!-- Awal Content -->
     <div class="container">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb mt-3">
-                <li class="breadcrumb-item"><a href="{% url 'home-page' %}">Home</a></li>
-                <li class="breadcrumb-item active">Blog Post</li>
-            </ol>
-        </nav>
         <div class="row">
-            {% for post in post_list %}
-            <div class="col-md-6 col-lg-4 col-sm-12 col-xs-12">
-                <div class="post-outer">
-                    <article class="post hentry">
-                        <div class="post-body entry content" id="animated-tumbnail">
-                            <div class="post-tumbnail">
-                                <a class="thumb" href="{% url 'post-detail' post.slug %}">
-                                    <span class="backtheo"></span>
-                                    <img alt="Judul Postingan" class="lazyloaded" height="186" src="{{ post.thumbnail.url }}" width="300">
-                                </a>
-                            </div>
-                            <h2 class="post-title entry-title">
-                                <a href="{% url 'post-detail' post.slug %}">{{ post.title }}</a>
-                            </h2>
-                            <span class="label-info">
-                                <a href="#" rel="tag">{{ post.category }}</a>
-                            </span>
-                            <div class="blog-date mb-1 text-muted">
-                                <span>{{ post.date_created | date:"l, d F Y | G.i" }}</span>
-                            </div>
-                            <div class="isi-post">
-                                <p>{{ post.excerpt }}</p>
-                            </div>
-                            <div class="post-infoku">
-                                <p class="admin"><i class="fas fa-check-circle" style="color: Dodgerblue"></i><a href="#" class="ml-1">{{ post.author.get_full_name }}</a></p>
+            <div class="col-md-10">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mt-3">
+                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item active">Blog Post</li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="col-md-2">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mt-3">
+                        <div class="card-dm">
+                            <div class="custom-control custom-switch">
+                                <input type="checkbox" class="custom-control-input" id="darkSwitch" />
+                                <label class="custom-control-label" for="darkSwitch">Dark</label>
                             </div>
                         </div>
-                    </article>
-                </div>
+                    </ol>
+                </nav>
             </div>
+        </div>
+        <div class="row">
+            {% for post in post_list %}
+                <div class="col-md-6 col-lg-4 col-sm-12 col-xs-12">
+                    <div class="post-outer">
+                        <article class="post hentry">
+                            <div class="post-body entry content" id="animated-tumbnail">
+                                <div class="post-tumbnail">
+                                    <a class="thumb" href="{% url 'post-detail' post.slug %}">
+                                        <span class="backtheo"></span>
+                                        <img alt="Judul Postingan" class="lazyloaded" height="186" src="{{ post.thumbnail.url }}" width="300">
+                                    </a>
+                                </div>
+                                <h2 class="post-title entry-title">
+                                    <a href="{% url 'post-detail' post.slug %}">{{ post.title }}</a>
+                                </h2>
+                                <span class="label-info">
+                                    <a href="#" rel="tag" style="background: var(
+                                            {% if post.category == 'Desain Grafis' %}--green
+                                            {% elif post.category == 'Mikrotik' %}--pink
+                                            {% elif post.category == 'Pemrograman' %}--blue
+                                            {% elif post.category == 'Sistem Operasi' %}--purple
+                                            {% elif post.category == 'Lainnya' %}--orange
+                                            {% endif %}
+                                            );">{{ post.category }}</a>
+                                </span>
+                                <div class="blog-date mb-1 text-muted">
+                                    <span>{{ post.date_created }}</span>
+                                </div>
+                                <div class="isi-post">
+                                    <p>{{ post.excerpt }}</p>
+                                </div>
+                                <div class="post-infoku">
+                                    <p class="admin"><i class="fas fa-check-circle" style="color: Dodgerblue"></i><a href="{% url 'author-profile' post.author %}" class="ml-1">{{ post.author.get_full_name }}</a></p>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
             {% endfor %}
         </div>
     </div>
+    <!-- Akhir Content -->
+
+    <!-- Awal pagination -->
     <nav aria-label="Page navigation example ">
         <ul class="pagination justify-content-center ">
             <li class="page-item "><a class="page-link " href="# ">Previous</a></li>
@@ -102,9 +109,51 @@
             <li class="page-item "><a class="page-link " href="# ">Next</a></li>
         </ul>
     </nav>
-    <footer class="warna-bg ">
-        <div class="text-white text-center pt-3 pb-3 ">
-            © Copyright 2020 | StarLigHTs Team
+    <!-- Akhir pagination -->
+
+    <!-- Awal Jumbotron 2 -->
+    <div id="hero-section2">
+        <ul class="bg-bubbles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <div class="hero-content container">
+            <h2 class="hero-title">
+                <span>GET IN TOUCH</span>
+            </h2>
+            <p class="hero-description">Follow Social Media Kami di</p>
+            <div id="social-headers">
+                <ul>
+                    <li class="fb-item">
+                        <a href="#"><i class="fab fa-facebook-square"></i>
+                        </a>
+                    </li>
+                    <li class="twitter-item">
+                        <a href="#"><i class="fab fa-twitter-square"></i>
+                        </a>
+                    </li>
+                    <li class="github-item">
+                        <a href="#"><i class="fab fa-github-square"></i>
+                        </a>
+                    </li>
+                    <li class="instagram-item">
+                        <a href="#"><i class="fab fa-instagram-square"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </footer>
+    </div>
+    <!-- Akhir Jumbotron 2 -->
+
+    {% include 'blog/footer.html' %}
+
 {% endblock %}

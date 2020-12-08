@@ -10,6 +10,7 @@ UPLOAD_TO = 'img/profile_pics'
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     image = models.ImageField(default='img/profile_pics/default.webp ', upload_to=UPLOAD_TO)
+    bio = models.TextField(max_length=200, blank=True, null=True)
 
     def __str__(self):
         return f'{self.user.username} Profile'
