@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
 from django.shortcuts import render, get_object_or_404, redirect
-from django.views.generic import CreateView, UpdateView, DeleteView
+from django.views.generic import CreateView, UpdateView, DeleteView, ListView
 from .models import Post
 from .forms import CommentForm, PostForm
 from users.forms import UserAuthenticationForm
@@ -15,31 +15,16 @@ def home_page(request):
         'id': 'Home Page',
         'post': featured_post
     }
-    return render(request, 'homepage.html', context)
+    return render(request, 'home_page.html', context)
 
 
-def blog_home(request):
-    post_list = Post.objects.all()
-    form = UserAuthenticationForm()
-    context = {
+class PostListView(ListView):
+    model = Post
+    paginate_by = 6
+    extra_context = {
         'id': 'Post List',
-        'title': 'Blog Home',
-        'post_list': post_list,
-        'form': form
+        'title': 'Blog'
     }
-    if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            messages.success(request, 'Anda berhasil Login')
-            return redirect('blog-home')
-        else:
-            messages.warning(request, 'Login GAGAL! Silahkan periksa kembali')
-            return redirect('blog-home')
-
-    return render(request, 'blog/postlist.html', context)
 
 
 def post_detail(request, slug):
@@ -64,7 +49,7 @@ def post_detail(request, slug):
         'new_comment': new_comment,
         'comment_form': comment_form
     }
-    return render(request, 'blog/postdetail.html', context)
+    return render(request, 'blog/post_detail.html', context)
 
 
 class PostCreateView(LoginRequiredMixin, CreateView):
@@ -102,8 +87,8 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         return False
 
 
-def author_profile(request, username):
-    user = get_object_or_404(User, username=username)
+def author_profile(request, slug):
+    user = get_object_or_404(User, username=slug)
 
     context = {
         'id': 'Author Profile',
@@ -111,4 +96,8 @@ def author_profile(request, username):
         'user': user
     }
 
-    return render(request, 'blog/authorprofile.html', context)
+    return render(request, 'blog/author_profile.html', context)
+
+
+def about_page(request):
+    return render(request, 'about.html', {'id': 'About'})

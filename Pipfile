@@ -12,6 +12,7 @@ whitenoise = "*"
 django-crispy-forms = "*"
 django-cleanup = "*"
 django-debug-toolbar = "*"
+gunicorn = "*"
 
 [dev-packages]
 

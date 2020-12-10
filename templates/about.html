@@ -1,0 +1,124 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block content %}
+{% include 'blog/navbar.html' %}
+    <div class="jumbotron jumbotron-fluid height100p banner" id="top">
+        <div class="container h100">
+            <div class="contentBox h100">
+                <div class="col-md-6 col-sm-12">
+                    <img src="{% static 'img/about.svg' %}" alt="Tentang Kami">
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <h1>Tentang Kami</h1>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magni, provident assumenda perferendis, id quas voluptatum neque explicabo labore repellat ipsum quos nulla deleniti nam. Aut eum delectus repellendus deleniti ullam!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="about-amri" id="about-amri">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-12 penjelasan">
+                    <h1>Back-End Developer</h1>
+                    <p>Bertugas untuk memastikan agar apa yang dibuat oleh front end developer atau sistem dan server di balik situs dapat bekerja. Posisi ini biasa disebut server-side.
+                        <br> Back end developer bertanggung jawab untuk memastikan agar situs dapat bekerja secara maksimal. Hal ini dikarenakan pengembangan dan perbaikan situs akan terus terjadi.</p>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <img src="{% static 'img/about-amri.svg' %}" alt="">
+                </div>
+            </div>
+            <div class="row card-foto">
+                <div class="col-md-6 col-sm-12">
+                    <div class="admin-foto">
+                        <img src="{% static 'img/amri-full.webp' %}" class="img-fluid">
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-12 social-media mt-3">
+                    <h1>Amri Reza Wahyudin</h1>
+                    <p class="text-muted text-right">Back-End Developer</p>
+                    <div class="wrapper float-right">
+                        <div class="button">
+                            <a href="https://www.facebook.com/AmZaDin14">
+                                <div class="icon"><i class="fab fa-facebook-f"></i></div>
+                                <span>Facebook</span>
+                            </a>
+                        </div>
+                        <div class="button">
+                            <a href="https://www.twitter.com/AmZaDin14">
+                                <div class="icon"><i class="fab fa-twitter"></i></div>
+                                <span>Twitter</span>
+                            </a>
+                        </div>
+                        <div class="button">
+                            <a href="https://www.github.com/AmZaDin14">
+                                <div class="icon"><i class="fab fa-github"></i></div>
+                                <span>Github</span>
+                            </a>
+                        </div>
+                        <div class="button">
+                            <a href="https://www.instagram.com/AmZaDin14">
+                                <div class="icon"><i class="fab fa-instagram"></i></div>
+                                <span>Instagram</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-maulana" id="about-maulana">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-12 penjelasan">
+                    <h1>Front-End Developer</h1>
+                    <p>Bertugas untuk memastikan agar situs atau aplikasi dapat dilihat oleh pengguna. Mereka bertanggung jawab agar pengguna dapat mendapatkan informasi sampai berinteraksi dengan situs atau web secara nyaman.
+                        <br> Tugas tersebut membuat front end pada akhirnya fokus pada komposisi di dalam situs atau aplikasi. Ia harus memastikan agar isi situs atau aplikasi, seperti gambar, tombol, konten, dan sebagainya tidak mengganggu kenyamanan
+                        pengguna.
+                    </p>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <img src="{% static 'img/about-maulana.svg' %}" alt="">
+                </div>
+            </div>
+            <div class="row card-foto">
+                <div class="col-md-6 col-sm-12">
+                    <div class="admin-foto">
+                        <img src="{% static 'img/maul.webp' %}" class="img-fluid">
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-12 social-media mt-3">
+                    <h1>Maulana Firmansyah</h1>
+                    <p class="text-muted text-right">Front-End Developer</p>
+                    <div class="wrapper float-right">
+                        <div class="button">
+                            <a href="https://www.facebook.com/maulana.firmansyah.1485/">
+                                <div class="icon"><i class="fab fa-facebook-f"></i></div>
+                                <span>Facebook</span>
+                            </a>
+                        </div>
+                        <div class="button">
+                            <a href="https://twitter.com/maulanazxz">
+                                <div class="icon"><i class="fab fa-twitter"></i></div>
+                                <span>Twitter</span>
+                            </a>
+                        </div>
+                        <div class="button">
+                            <a href="https://www.github.com/iMazXZ">
+                                <div class="icon"><i class="fab fa-github"></i></div>
+                                <span>Github</span>
+                            </a>
+                        </div>
+                        <div class="button">
+                            <a href="https://www.instagram.com/maulanazxz">
+                                <div class="icon"><i class="fab fa-instagram"></i></div>
+                                <span>Instagram</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

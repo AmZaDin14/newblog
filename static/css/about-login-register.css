@@ -1,0 +1,326 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #e9ecef;
+}
+
+body::-webkit-scrollbar {
+    width: 0.25rem;
+}
+
+body::-webkit-scrollbar-track {
+    background: #1e1e24;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: 6649b8;
+}
+
+
+/* NAVBAR */
+
+.custom-toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(54, 209, 220, .92)' stroke-width='4' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+.navbar-toggler {
+    border: none;
+}
+
+.searchbar .btn {
+    border: none;
+}
+
+.searchbar input[type="search"] {
+    border: 0;
+    padding: 0 10px;
+    width: 0px;
+    height: 0px;
+    border-radius: 3px;
+}
+
+.searchbar {
+    position: relative;
+}
+
+.searchbar .icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: none;
+    width: 35px;
+    height: 100%;
+    border-radius: 3px;
+    color: #171a98;
+}
+
+.searchbar .icon i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+}
+
+.searchbar .icon.active {
+    background: #1696ff;
+    transition: all 0.3s ease;
+}
+
+.searchbar input[type="search"].active {
+    width: 250px;
+    height: 35px;
+    padding: 0 10px;
+    transition: all 0.5s 0.1s ease;
+}
+
+
+/* NAVBAR END */
+
+
+/* SIGNUP dan LOGIN PAGE */
+
+.register-content {
+    background-color: #fff;
+    padding: 2rem 1rem 2rem 1rem;
+}
+
+.login-content {
+    margin: 5% 10%;
+    background-color: #fff;
+    padding: 2rem 1rem 2rem 1rem;
+}
+
+.form-group legend {
+    font-style: normal;
+    font-weight: 600 !important;
+    font-size: 2rem;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    border-color: #9270EF !important;
+    border-style: solid !important;
+    border-width: 0 0 1px 0 !important;
+    padding: 0px !important;
+    color: #495057;
+    height: auto;
+    border-radius: 0;
+    background-color: #ffffff;
+    background-clip: padding-box;
+}
+
+.form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #000000;
+    outline: none;
+    box-shadow: none;
+}
+
+.btn {
+    border-color: #9270EF;
+    color: #9270EF;
+}
+
+.btn:hover {
+    background-color: #9270EF;
+    color: #fff;
+    border-color: #9270EF;
+}
+
+
+/* SIGNUP dan LOGIN PAGE END*/
+
+
+/* JUMBOTRON ABOUT */
+
+.banner {
+    position: relative;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    margin-bottom: 0;
+}
+
+.height100p {
+    height: 100vh;
+}
+
+.h100 {
+    height: 100%;
+}
+
+.contentBox {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 10;
+}
+
+.contentBox h1 {
+    font-weight: 900;
+    color: #9270EF;
+    text-shadow: #000000;
+    font-size: 55px;
+}
+
+.contentBox p {
+    color: #24285b;
+}
+
+
+/* JUMBOTRON ABOUT END*/
+
+
+/* .blog {
+    position: relative;
+    padding: 50px 0;
+    background-color: #000000;
+} */
+
+
+/* ADMIN INFO */
+
+.penjelasan h1 {
+    font-weight: 800;
+    color: #9270EF;
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
+.admin-foto img {
+    width: 400px;
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 1rem;
+    box-shadow: rgba(179, 46, 240, 0.4) 5px 5px, rgba(179, 46, 240, 0.3) 10px 10px, rgba(179, 46, 240, 0.2) 15px 15px, rgba(179, 46, 240, 0.1) 20px 20px, rgba(179, 46, 240, 0.05) 25px 25px;
+}
+
+.card-foto {
+    margin-top: 6rem;
+}
+
+.about-amri {
+    margin-bottom: 5rem;
+}
+
+.about-maulana {
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+}
+
+
+/* SOCIAL MEDIA ICON */
+
+.social-media h1 {
+    text-align: right;
+    text-decoration: underline;
+    font-weight: 800;
+    color: #9270EF;
+}
+
+.wrapper .button {
+    display: inline-block;
+    height: 60px;
+    width: 60px;
+    margin: 0 5px;
+    overflow: hidden;
+    background: #fff;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-out;
+}
+
+.wrapper .button:hover {
+    width: 200px;
+}
+
+.wrapper .button .icon {
+    display: inline-block;
+    height: 60px;
+    width: 60px;
+    text-align: center;
+    border-radius: 50px;
+    box-sizing: border-box;
+    line-height: 60px;
+    transition: all 0.3s ease-out;
+}
+
+.wrapper .button:nth-child(1):hover .icon {
+    background: #3b5999;
+}
+
+.wrapper .button:nth-child(2):hover .icon {
+    background: #55acee;
+}
+
+.wrapper .button:nth-child(3):hover .icon {
+    background: #333;
+}
+
+.wrapper .button:nth-child(4):hover .icon {
+    background: #e4405f;
+}
+
+.wrapper .button .icon i {
+    color: #4a3681;
+    font-size: 25px;
+    line-height: 60px;
+    transition: all 0.3s ease-out;
+}
+
+.wrapper .button:hover .icon i {
+    color: #fff;
+}
+
+.wrapper .button span {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 60px;
+    margin-left: 10px;
+}
+
+
+/* SOCIAL MEDIA ICON END */
+
+
+/* UKURAN SEMPURNA MASING MASING DEVICE */
+
+@media (min-width: 768px) {
+    .penjelasan {
+        margin-top: 6rem;
+    }
+}
+
+@media (max-width: 456px) {
+    .contentBox {
+        display: block;
+    }
+}
+
+@media (max-width: 424px) {
+    .contentBox {
+        display: block;
+        padding-top: 5rem;
+    }
+}
+
+@media (max-width: 306px) {
+    .contentBox {
+        display: block;
+    }
+}
+
+
+/* UKURAN SEMPURNA MASING MASING DEVICE END*/

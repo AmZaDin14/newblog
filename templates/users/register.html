@@ -6,11 +6,10 @@
     {% include 'blog/navbar.html' %}
 <div class="container">
     <div class="row content">
-        <div class="col-md-6 m-auto">
+        <div class="col-md-6 col-lg-7 m-auto">
             <img src="{% static 'img/signup.svg' %}" class="img-fluid" alt="Sign Up Now!">
         </div>
-        <div class="col-md-6 pt-4">
-
+        <div class="col-md-6 col-lg-5 pt-4">
             <form method="POST">
                 {% csrf_token %}
                 <fieldset class="form-group">
