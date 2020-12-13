@@ -1,19 +1,15 @@
 {% extends 'layouts/base.html' %}
 {% block content %}
-    {% include 'layouts/navbar.html' %}
+
     <style>
         tr[data-href] {
             cursor: pointer;
         }
     </style>
 
-    <img class="rounded-circle pt-3" src="{{ user.profile.image.url }}" alt="">
-    <h1>{{ user.username }}</h1>
-    <h2>{{ user.get_full_name }}</h2>
-    <h3>{{ user.email }}</h3>
-    <p>{{ user.profile.bio }}</p>
+    {% include 'layouts/navbar.html' %}
     <section class="container card pt-5">
-        <div class="card-header">Postingan {{ user.get_full_name }}</div>
+        <div class="card-header">Postingan Anda</div>
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-hover">
@@ -22,6 +18,8 @@
                         <th scope="col">#</th>
                         <th scope="col">Judul</th>
                         <th scope="col">Tanggal</th>
+                        <th scope="col">Edit</th>
+                        <th scope="col">Hapus</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -30,12 +28,15 @@
                                 <th scope="row">{{ forloop.counter }}</th>
                                 <td>{{ post.title }}</td>
                                 <td>{{ post.date_created }}</td>
+                                <td><a href="{% url 'post-update' post.slug %}" class="btn btn-sm btn-outline-info">Edit</a></td>
+                                <td><a href="{% url 'post-delete' post.slug %}" class="btn btn-sm btn-outline-danger">Hapus</a></td>
                             </tr>
                     {% endfor %}
                     </tbody>
                 </table>
             </div>
         </div>
+        <a href="{% url 'post-create' %}" class="btn btn-primary btn-lg"><i class="fas fa-plus"></i> Post</a>
     </section>
 
     <script>

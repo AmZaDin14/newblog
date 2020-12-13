@@ -1,7 +1,7 @@
-{% extends 'blog/base.html' %}
+{% extends 'layouts/base.html' %}
 {% load static %}
 {% block content %}
-{% include 'blog/navbar.html' %}
+    {% include 'layouts/navbar.html' %}
     <div class="jumbotron jumbotron-fluid height100p banner" id="top">
         <div class="container h100">
             <div class="contentBox h100">
@@ -10,7 +10,9 @@
                 </div>
                 <div class="col-md-6 col-sm-12">
                     <h1>Tentang Kami</h1>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magni, provident assumenda perferendis, id quas voluptatum neque explicabo labore repellat ipsum quos nulla deleniti nam. Aut eum delectus repellendus deleniti ullam!</p>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magni, provident assumenda perferendis,
+                        id quas voluptatum neque explicabo labore repellat ipsum quos nulla deleniti nam. Aut eum
+                        delectus repellendus deleniti ullam!</p>
                 </div>
             </div>
         </div>
@@ -21,8 +23,10 @@
             <div class="row">
                 <div class="col-md-6 col-sm-12 penjelasan">
                     <h1>Back-End Developer</h1>
-                    <p>Bertugas untuk memastikan agar apa yang dibuat oleh front end developer atau sistem dan server di balik situs dapat bekerja. Posisi ini biasa disebut server-side.
-                        <br> Back end developer bertanggung jawab untuk memastikan agar situs dapat bekerja secara maksimal. Hal ini dikarenakan pengembangan dan perbaikan situs akan terus terjadi.</p>
+                    <p>Bertugas untuk memastikan agar apa yang dibuat oleh front end developer atau sistem dan server di
+                        balik situs dapat bekerja. Posisi ini biasa disebut server-side.
+                        <br> Back end developer bertanggung jawab untuk memastikan agar situs dapat bekerja secara
+                        maksimal. Hal ini dikarenakan pengembangan dan perbaikan situs akan terus terjadi.</p>
                 </div>
                 <div class="col-md-6 col-sm-12">
                     <img src="{% static 'img/about-amri.svg' %}" alt="">
@@ -73,8 +77,12 @@
             <div class="row">
                 <div class="col-md-6 col-sm-12 penjelasan">
                     <h1>Front-End Developer</h1>
-                    <p>Bertugas untuk memastikan agar situs atau aplikasi dapat dilihat oleh pengguna. Mereka bertanggung jawab agar pengguna dapat mendapatkan informasi sampai berinteraksi dengan situs atau web secara nyaman.
-                        <br> Tugas tersebut membuat front end pada akhirnya fokus pada komposisi di dalam situs atau aplikasi. Ia harus memastikan agar isi situs atau aplikasi, seperti gambar, tombol, konten, dan sebagainya tidak mengganggu kenyamanan
+                    <p>Bertugas untuk memastikan agar situs atau aplikasi dapat dilihat oleh pengguna. Mereka
+                        bertanggung jawab agar pengguna dapat mendapatkan informasi sampai berinteraksi dengan situs
+                        atau web secara nyaman.
+                        <br> Tugas tersebut membuat front end pada akhirnya fokus pada komposisi di dalam situs atau
+                        aplikasi. Ia harus memastikan agar isi situs atau aplikasi, seperti gambar, tombol, konten, dan
+                        sebagainya tidak mengganggu kenyamanan
                         pengguna.
                     </p>
                 </div>

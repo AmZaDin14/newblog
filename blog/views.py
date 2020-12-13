@@ -78,7 +78,7 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
 class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Post
-    success_url = '/blog/'
+    success_url = '/user/dashboard/'
 
     def test_func(self):
         post = self.get_object()
@@ -89,11 +89,13 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
 def author_profile(request, slug):
     user = get_object_or_404(User, username=slug)
+    post_list = Post.objects.filter(author=user)
 
     context = {
         'id': 'Author Profile',
         'title': user.username,
-        'user': user
+        'user': user,
+        'post_list': post_list
     }
 
     return render(request, 'blog/author_profile.html', context)

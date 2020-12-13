@@ -1,7 +1,10 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView
+from django.views.generic import ListView
+from blog.models import Post
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
 
 
@@ -51,3 +54,14 @@ def profile(request):
 
     return render(request, 'users/profile.html', context)
 
+
+class DashboardView(LoginRequiredMixin, ListView):
+    model = Post
+    paginate_by = 6
+    template_name = 'users/dashboard.html'
+    extra_context = {
+        'title': 'Dashboard'
+    }
+
+    def get_queryset(self):
+        return Post.objects.filter(author=self.request.user)

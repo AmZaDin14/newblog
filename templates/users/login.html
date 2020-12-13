@@ -1,8 +1,8 @@
-{% extends 'blog/base.html' %}
+{% extends 'layouts/base.html' %}
+{% load crispy_forms_filters %}
 {% load static %}
 {% block content %}
-    {% include 'blog/navbar.html' %}
-    {% load crispy_forms_tags %}
+    {% include 'layouts/navbar.html' %}
     <div class="container">
         <div class="row login-content">
             <div class="col-sm-5 pt-4">

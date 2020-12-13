@@ -1,9 +1,9 @@
-{% extends 'blog/base.html' %}
+{% extends 'layouts/base.html' %}
 {% load crispy_forms_filters %}
-{% block content %}
 {% load static %}
 {% load crispy_forms_tags %}
-    {% include 'blog/navbar.html' %}
+{% block content %}
+    {% include 'layouts/navbar.html' %}
     <div id="hero-section">
         <div class="container">
             <div id="head-line">
@@ -39,7 +39,7 @@
                     <ol class="breadcrumb mt-3">
                         <div class="card-dm">
                             <div class="custom-control custom-switch">
-                                <input type="checkbox" class="custom-control-input" id="darkSwitch" />
+                                <input type="checkbox" class="custom-control-input" id="darkSwitch"/>
                                 <label class="custom-control-label" for="darkSwitch">Dark</label>
                             </div>
                         </div>
@@ -58,7 +58,8 @@
                         <div>Posted on: {{ post.date_created }}</div>
                         <figure class="service text-center mt-3">
                             <div class="svcimg">
-                                <img src="{{ post.thumbnail.url }}" class="figure-img img-fluid rounded" alt="Gambar Postingan">
+                                <img src="{{ post.thumbnail.url }}" class="figure-img img-fluid rounded"
+                                     alt="Gambar Postingan">
                                 <div class="overlay"></div>
                             </div>
                         </figure>
@@ -66,39 +67,39 @@
                     </div>
                     <!--comment-->
                     <div class="col-md-8 card mb-4  mt-3 ">
-      <div class="card-body">
-        <!-- comments -->
-        <h2>{{ comments.count }} comments</h2>
+                        <div class="card-body">
+                            <!-- comments -->
+                            <h2>{{ comments.count }} comments</h2>
 
-        {% for comment in comments %}
-        <div class="comments" style="padding: 10px;">
-          <p class="font-weight-bold">
-            {{ comment.name }}
-            <span class=" text-muted font-weight-normal">
+                            {% for comment in comments %}
+                                <div class="comments" style="padding: 10px;">
+                                    <p class="font-weight-bold">
+                                        {{ comment.name }}
+                                        <span class=" text-muted font-weight-normal">
               {{ comment.created_on }}
             </span>
-          </p>
-          {{ comment.body | linebreaks }}
-        </div>
-        {% endfor %}
-      </div>
-    </div>
-    <div class="col-md-8 card mb-4  mt-3 ">
-      <div class="card-body">
-        {% if new_comment %}
-        <div class="alert alert-success" role="alert">
-          Your comment is awaiting moderation
-        </div>
-        {% else %}
-        <h3>Leave a comment</h3>
-        <form method="post" style="margin-top: 1.3em;">
-          {{ comment_form | crispy }}
-          {% csrf_token %}
-          <button type="submit" class="btn btn-primary  btn-lg">Submit</button>
-        </form>
-        {% endif %}
-      </div>
-    </div>
+                                    </p>
+                                    {{ comment.body | linebreaks }}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="col-md-8 card mb-4  mt-3 ">
+                        <div class="card-body">
+                            {% if new_comment %}
+                                <div class="alert alert-success" role="alert">
+                                    Your comment is awaiting moderation
+                                </div>
+                            {% else %}
+                                <h3>Leave a comment</h3>
+                                <form method="post" style="margin-top: 1.3em;">
+                                    {{ comment_form | crispy }}
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-primary  btn-lg">Submit</button>
+                                </form>
+                            {% endif %}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

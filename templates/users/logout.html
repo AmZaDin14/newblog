@@ -1,12 +1,16 @@
-{% extends 'blog/base.html' %}
+{% extends 'layouts/base.html' %}
 {% block content %}
     <div class="container">
-    <div class="alert alert-success mt-5" role="alert">
-  <h4 class="alert-heading">Anda berhasil Logout</h4>
-  <p>Anda bisa kembali ke halaman utama, atau menuju ke halaman Login</p>
-  <hr>
-        <a href="{% url 'blog-home' %}"><button class="btn btn-secondary">Kembali</button></a>
-        <a href="{% url 'login' %}"><button class="btn btn-primary">Ke halaman Login</button></a>
-</div>
+        <div class="alert alert-success mt-5" role="alert">
+            <h4 class="alert-heading">Anda berhasil Logout</h4>
+            <p>Anda bisa kembali ke halaman utama, atau menuju ke halaman Login</p>
+            <hr>
+            <a href="{% url 'blog-home' %}">
+                <button class="btn btn-secondary">Kembali</button>
+            </a>
+            <a href="{% url 'login' %}">
+                <button class="btn btn-primary">Ke halaman Login</button>
+            </a>
+        </div>
     </div>
 {% endblock %}
