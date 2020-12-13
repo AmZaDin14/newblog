@@ -1,12 +1,9 @@
-from django.contrib import messages
-from django.contrib.auth import authenticate, login
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404
 from django.views.generic import CreateView, UpdateView, DeleteView, ListView
 from .models import Post
 from .forms import CommentForm, PostForm
-from users.forms import UserAuthenticationForm
 
 
 def home_page(request):
