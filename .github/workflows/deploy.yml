@@ -30,3 +30,4 @@ jobs:
           git fetch
           git reset --hard HEAD
           git merge origin/main
+          sudo service gunicorn restart
