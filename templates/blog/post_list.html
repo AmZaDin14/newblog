@@ -30,7 +30,7 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-10">
+            <div class="col-lg-10 col-md-8">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mt-3">
                         <li class="breadcrumb-item"><a href="{% url 'blog-home' %}">Home</a></li>
@@ -38,17 +38,8 @@
                     </ol>
                 </nav>
             </div>
-            <div class="col-2">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb mt-3">
-                        {#                        <div class="card-dm">#}
-                        <li class="custom-control custom-switch">
-                            <input type="checkbox" class="custom-control-input" id="darkSwitch"/>
-                            <label id="icon" style="cursor: pointer" for="darkSwitch"></label>
-                        </li>
-                        {#                        </div>#}
-                    </ol>
-                </nav>
+            <div class="col-lg-2 col-md-4">
+                {% include 'layouts/dark_switcher.html' %}
             </div>
         </div>
         <div class="row">
