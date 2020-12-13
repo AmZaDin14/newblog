@@ -23,6 +23,9 @@ class PostListView(ListView):
         'title': 'Blog'
     }
 
+    def get_queryset(self):
+        return Post.objects.filter(status=1)
+
 
 def post_detail(request, slug):
     post = get_object_or_404(Post, slug=slug)

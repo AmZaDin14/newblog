@@ -64,4 +64,4 @@ class DashboardView(LoginRequiredMixin, ListView):
     }
 
     def get_queryset(self):
-        return Post.objects.filter(author=self.request.user)
+        return Post.objects.filter(status=1).filter(author=self.request.user)

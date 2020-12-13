@@ -1,6 +1,6 @@
 from .models import Comment, Post
 from django import forms
-from django_summernote.widgets import SummernoteWidget, SummernoteInplaceWidget
+from django_summernote.widgets import SummernoteWidget
 
 
 class CommentForm(forms.ModelForm):

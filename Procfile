@@ -1,0 +1,1 @@
+web: gunicorn --access-logfile - --workers 3 blogsite.wsgi:application

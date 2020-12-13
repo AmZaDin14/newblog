@@ -43,9 +43,9 @@
                 <div class="card border-0 mb-4">
                     <div class="card-body">
                         <h2>{{ post.title }}</h2>
-                        <a href="#0" class="badge badge-primary"><i class="fas fa-tags" aria-hidden="true"></i>
+                        <a href="#" class="badge badge-primary"><i class="fas fa-tags" aria-hidden="true"></i>
                             {{ post.category }}</a>
-                        <div><a href="#0">{{ post.author }}</a></div>
+                        <div><a href="{% url 'author-profile' post.author %}">{{ post.author }}</a></div>
                         <div>Posted on: {{ post.date_created }}</div>
                         <figure class="service text-center mt-3">
                             <div class="svcimg">
@@ -67,8 +67,8 @@
                                     <p class="font-weight-bold">
                                         {{ comment.name }}
                                         <span class=" text-muted font-weight-normal">
-              {{ comment.created_on }}
-            </span>
+                                            {{ comment.created_on }}
+                                        </span>
                                     </p>
                                     {{ comment.body | linebreaks }}
                                 </div>
