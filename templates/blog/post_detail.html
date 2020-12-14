@@ -45,7 +45,7 @@
                         <h2>{{ post.title }}</h2>
                         <a href="#" class="badge badge-primary"><i class="fas fa-tags" aria-hidden="true"></i>
                             {{ post.category }}</a>
-                        <div><a href="{% url 'author-profile' post.author %}">{{ post.author }}</a></div>
+                        <div><a href="{% url 'author-profile' post.author %}">{{ post.author.get_full_name }}</a></div>
                         <div>Posted on: {{ post.date_created }}</div>
                         <figure class="service text-center mt-3">
                             <div class="svcimg">
@@ -61,7 +61,6 @@
                         <div class="card-body">
                             <!-- comments -->
                             <h2>{{ comments.count }} comments</h2>
-
                             {% for comment in comments %}
                                 <div class="comments" style="padding: 10px;">
                                     <p class="font-weight-bold">
