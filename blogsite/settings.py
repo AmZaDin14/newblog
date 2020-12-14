@@ -89,7 +89,8 @@ DATABASES = {
         'NAME': 'StarLigHTs',
         'USER': 'amri',
         'PASSWORD': 'admin',
-        'HOST': 'localhost'
+        'HOST': 'localhost',
+        # 'HOST': 'starlights.online',
     }
 }
 

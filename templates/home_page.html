@@ -61,62 +61,64 @@
         </div>
     </div>
 </div>
-<section class="blog" id="blog">
-    <div class="container">
-        <div class="row">
-            <div class="offset-sm-2 col-sm-8">
-                <div class="headerText text-center">
-                    <h2 data-aos="fade-up" ata-aos-duration="1000" data-aos-delay="0">Our Featured Post</h2>
-                </div>
-            </div>
-        </div>
-        <div class="row main-row p-2" data-aos="fade-up" ata-aos-duration="1000" data-aos-delay="0">
-            <div class="col-lg-4 col-md-12 col-sm-12" data-aos="fade-up" ata-aos-duration="1000"
-                 data-aos-delay="100">
-                <div class="blog-img">
-                    <img src="{{ post.thumbnail.url }}" alt="Post" class="img-fluid">
-                </div>
-                <div class="row">
-                    <div class="col-sm-12 mb-2">
-                        <ul class="list-group list-group-horizontal">
-                            <li class="list-group-item">
-                                <i class="fas fa-tags" aria-hidden="true"></i><a href="#"
-                                                                                 class="ml-1">{{ post.category }}</a>
-                            </li>
-                            <li class="post-infoku ml-3">
-                                <p class="admin"><i class="fas fa-user"></i><a
-                                        href="{% url 'author-profile' post.author %}"
-                                        class="ml-1">{{ post.author.get_full_name }}</a></p>
-                            </li>
-                        </ul>
+{% if post %}
+    <section class="blog" id="blog">
+        <div class="container">
+            <div class="row">
+                <div class="offset-sm-2 col-sm-8">
+                    <div class="headerText text-center">
+                        <h2 data-aos="fade-up" ata-aos-duration="1000" data-aos-delay="0">Our Featured Post</h2>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-8 col-md-12 col-sm-12" data-aos="fade-up" ata-aos-duration="1000"
-                 data-aos-delay="200">
-                <div class="blog-title mb-2">
-                    <h3>{{ post.title }}</h3>
+            <div class="row main-row p-2" data-aos="fade-up" ata-aos-duration="1000" data-aos-delay="0">
+                <div class="col-lg-4 col-md-12 col-sm-12" data-aos="fade-up" ata-aos-duration="1000"
+                     data-aos-delay="100">
+                    <div class="blog-img">
+                        <img src="{{ post.thumbnail.url }}" alt="Post" class="img-fluid">
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 mb-2">
+                            <ul class="list-group list-group-horizontal">
+                                <li class="list-group-item">
+                                    <i class="fas fa-tags" aria-hidden="true"></i><a href="#"
+                                                                                     class="ml-1">{{ post.category }}</a>
+                                </li>
+                                <li class="post-infoku ml-3">
+                                    <p class="admin"><i class="fas fa-user"></i><a
+                                            href="{% url 'author-profile' post.author %}"
+                                            class="ml-1">{{ post.author.get_full_name }}</a></p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                <div class="blog-date mb-2 text-muted">
-                    <span>{{ post.date_created | naturaltime }}</span>
-                </div>
-                <div class="blog-desc">
-                    <p>{{ post.excerpt }}</p>
-                </div>
-                <div class="blog-read-more mb-2">
-                    <a href="{% url 'post-detail' post.slug %}">
-                        <button class="btn btn-outline-dark">Read More</button>
-                    </a>
+                <div class="col-lg-8 col-md-12 col-sm-12" data-aos="fade-up" ata-aos-duration="1000"
+                     data-aos-delay="200">
+                    <div class="blog-title mb-2">
+                        <h3>{{ post.title }}</h3>
+                    </div>
+                    <div class="blog-date mb-2 text-muted">
+                        <span>{{ post.date_created | naturaltime }}</span>
+                    </div>
+                    <div class="blog-desc">
+                        <p>{{ post.excerpt }}</p>
+                    </div>
+                    <div class="blog-read-more mb-2">
+                        <a href="{% url 'post-detail' post.slug %}">
+                            <button class="btn btn-outline-dark">Read More</button>
+                        </a>
+                    </div>
                 </div>
             </div>
+            <div class="button-blogpost">
+                <a href="{% url  'blog-home' %}" class="btn btnD1" data-aos="fade-up" ata-aos-duration="1000"
+                   data-aos-delay="0">View
+                    More</a>
+            </div>
         </div>
-        <div class="button-blogpost">
-            <a href="{% url  'blog-home' %}" class="btn btnD1" data-aos="fade-up" ata-aos-duration="1000"
-               data-aos-delay="0">View
-                More</a>
-        </div>
-    </div>
-</section>
+    </section>
+{% endif %}
 <section class="developer" id="developer">
     <div class="container">
         <div class="row">
@@ -132,7 +134,8 @@
             <div class="col-6">
                 <div class="placeBox" data-aos="fade-up" ata-aos-duration="1000" data-aos-delay="500">
                     <div class="imgBx">
-                        <img src="{% static 'img/amri.webp' %}" class="img-fluid image-resize max-height" alt="Amri Reza Wahyudin">
+                        <img src="{% static 'img/amri.webp' %}" class="img-fluid image-resize max-height"
+                             alt="Amri Reza Wahyudin">
                     </div>
                     <div class="content">
                         <h3>Amri Reza Wahyudin<br><span>Back-End Programmer</span></h3>

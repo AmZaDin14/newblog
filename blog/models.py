@@ -7,14 +7,17 @@ from PIL import Image
 from os.path import basename, splitext
 
 
+# Taget Lokasi untuk thumbnail
 UPLOAD_TO = 'img'
 
+# Opsi Status Postingan
 STATUS = {
     (0, 'Draft'),
     (1, 'Publish')
 }
 
 
+# Kategori Post
 class Categories(models.TextChoices):
     DESAIN_GRAFIS = 'Desain Grafis'
     MIKROTIK = 'Mikrotik'
@@ -23,6 +26,7 @@ class Categories(models.TextChoices):
     LAINNYA = 'Lainnya'
 
 
+# Model Post
 class Post(models.Model):
     title = models.CharField(max_length=50)
     slug = models.SlugField()
@@ -36,9 +40,11 @@ class Post(models.Model):
     status = models.IntegerField(choices=STATUS, default=0)
 
     class Meta:
+        # Default order sesuai tanggal
         ordering = ['-date_created']
 
     def save(self, *args, **kwargs):
+        # Membuat slug menjadi unik setiap post
         original_slug = slugify(self.title)
         queryset = Post.objects.all().filter(slug__iexact=original_slug).count()
 
@@ -51,6 +57,7 @@ class Post(models.Model):
 
         self.slug = slug
 
+        # Otomatis mengatur opsi featured agar tidak lebih dari 1
         if self.featured:
             try:
                 self.status = 1
@@ -63,6 +70,7 @@ class Post(models.Model):
 
         super(Post, self).save(*args, **kwargs)
 
+        # Mengubah format gambar menjadi webp
         img = Image.open(self.thumbnail.path)
         img = img.convert('RGB')
         img_path = splitext(self.thumbnail.path)[0]
@@ -77,6 +85,7 @@ class Post(models.Model):
         return reverse('post-detail', kwargs={'slug': self.slug})
 
 
+# Model Komentar
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
     name = models.CharField(max_length=80)

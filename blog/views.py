@@ -7,11 +7,17 @@ from .forms import CommentForm, PostForm
 
 
 def home_page(request):
-    featured_post = Post.objects.get(featured=True)
     context = {
         'id': 'Home Page',
-        'post': featured_post
     }
+    try:
+        featured_post = Post.objects.get(featured=True)
+        context += {
+            'post': featured_post
+        }
+    except Post.DoesNotExist:
+        pass
+
     return render(request, 'home_page.html', context)
 
 
@@ -32,6 +38,7 @@ def post_detail(request, slug):
     comments = post.comments.filter(active=True)
     new_comment = None
 
+    # Jika ada request komentar baru
     if request.method == 'POST':
         comment_form = CommentForm(data=request.POST)
         if comment_form.is_valid():
