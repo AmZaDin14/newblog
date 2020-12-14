@@ -85,11 +85,11 @@ WSGI_APPLICATION = 'blogsite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3'
-        # 'USER': 'amri',
-        # 'PASSWORD': 'admin',
-        # 'HOST': 'starlights.online'
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'StarLigHTs',
+        'USER': 'amri',
+        'PASSWORD': 'admin',
+        'HOST': 'localhost'
     }
 }
 
