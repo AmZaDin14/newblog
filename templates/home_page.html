@@ -61,9 +61,9 @@
         </div>
     </div>
 </div>
-{% if post %}
-    <section class="blog" id="blog">
-        <div class="container">
+<section class="blog" id="blog">
+    <div class="container">
+        {% if post %}
             <div class="row">
                 <div class="offset-sm-2 col-sm-8">
                     <div class="headerText text-center">
@@ -116,9 +116,21 @@
                    data-aos-delay="0">View
                     More</a>
             </div>
-        </div>
-    </section>
-{% endif %}
+        {% else %}
+            <div class="row">
+                <div class="offset-sm-2 col-sm-8">
+                    <div class="headerText text-center">
+                        <h2 data-aos="fade-up" ata-aos-duration="1000" data-aos-delay="0">Our Blog</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="button-blogpost">
+                <a href="{% url  'blog-home' %}" class="btn btnD1" data-aos="fade-up" ata-aos-duration="1000"
+                   data-aos-delay="0">Visit</a>
+            </div>
+        {% endif %}
+    </div>
+</section>
 <section class="developer" id="developer">
     <div class="container">
         <div class="row">

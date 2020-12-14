@@ -12,9 +12,7 @@ def home_page(request):
     }
     try:
         featured_post = Post.objects.get(featured=True)
-        context += {
-            'post': featured_post
-        }
+        context['post'] = featured_post
     except Post.DoesNotExist:
         pass
 
