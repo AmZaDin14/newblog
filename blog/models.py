@@ -31,7 +31,7 @@ class Post(models.Model):
     title = models.CharField(max_length=50)
     slug = models.SlugField()
     category = models.CharField(max_length=50, choices=Categories.choices, default=Categories.LAINNYA)
-    thumbnail = models.ImageField(upload_to=UPLOAD_TO, default='img/default.webp')
+    thumbnail = models.ImageField(default='img/default.webp', upload_to=UPLOAD_TO)
     excerpt = models.CharField(max_length=150)
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='blog_post', null=True)
     content = models.TextField()
@@ -70,13 +70,13 @@ class Post(models.Model):
 
         super(Post, self).save(*args, **kwargs)
 
-        # Mengubah format gambar menjadi webp
-        img = Image.open(self.thumbnail.path)
-        img = img.convert('RGB')
-        img_path = splitext(self.thumbnail.path)[0]
-        img_base = basename(self.thumbnail.path)
-        img.save(img_path + '.webp', 'webp')
-        self.thumbnail = UPLOAD_TO + '/' + splitext(img_base)[0] + '.webp'
+        if splitext(basename(self.thumbnail.path)) != '.webp':
+            img = Image.open(self.thumbnail.path)
+            img = img.convert('RGB')
+            img_path = splitext(self.thumbnail.path)[0]
+            img_base = basename(self.thumbnail.path)
+            img.save(img_path + '.webp', 'webp')
+            self.thumbnail = UPLOAD_TO + '/' + splitext(img_base)[0] + '.webp'
 
     def __str__(self):
         return self.title

@@ -17,3 +17,9 @@ class PostForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = ['title', 'category', 'thumbnail', 'excerpt', 'content', 'featured', 'status']
+
+
+class DashboardForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = ['featured']
